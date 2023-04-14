@@ -254,11 +254,11 @@ try{
 
 module.exports.login = async (req, res) => {
   try{  
-   
+
     const {email, password} = req.body;
  
     const user = await UserRegister.login(email,password)
-    console.log(email, password);
+   
     if(!user)
     {
       const company = await Company.login(email,password)
@@ -272,11 +272,11 @@ module.exports.login = async (req, res) => {
           httpOnly:false,
           maxAge:maxAge*1000
         })
-        console.log("Cookies", res.cookie)
+    
         res.send({usertype:"company",id:company._id,verified:company.detailFlag})
 
       }else{
-
+        
         const admin = await Admin.login(email,password);
 
         if(admin){
@@ -289,6 +289,8 @@ module.exports.login = async (req, res) => {
             maxAge:maxAge*1000
           })
 
+         
+
           res.send({usertype:admin.role,id:admin._id});
         }else{
 
@@ -297,17 +299,18 @@ module.exports.login = async (req, res) => {
     }
   }
 else{
+
     const token = createToken(user._id)
 
     res.cookie("jwt",token,{
       withCredentials:true,
-      httpOnly:true,
-      sameSite:'none',
+      httpOnly:false,
       maxAge:maxAge*1000
     })
 
-    console.log("Cookies2", req.cookies.jwt)
-    res.send({usertype:"student",id:user._id,verified:user.detailFlag})
+    console.log(req.cookies.jwt) ;
+
+    res.send({usertype:"student",id:user._id,verified:user.detailFlag}) ;
   }
 }catch(err){
   logger.error(err + " in Login") ;
