@@ -305,10 +305,15 @@ module.exports.login = async (req, res) => {
     res.cookie("jwt",token,{
       withCredentials:true,
       httpOnly:false,
-      maxAge:maxAge*1000
+      maxAge:maxAge*1000,
+      domain : ".onrender.com",
+      secure: true, 
+      path: "/", 
+      hostOnly: true, 
+      sameSite: false, 
     })
 
-    console.log(req.cookies.jwt) ;
+    console.log("Cookies", req.cookies.jwt) ;
 
     res.send({usertype:"student",id:user._id,verified:user.detailFlag}) ;
   }
