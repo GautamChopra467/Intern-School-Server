@@ -272,7 +272,7 @@ module.exports.login = async (req, res) => {
           httpOnly:false,
           maxAge:maxAge*1000
         })
-
+        console.log("Cookies1", res.cookie)
         res.send({usertype:"company",id:company._id,verified:company.detailFlag})
 
       }else{
@@ -304,7 +304,7 @@ else{
       httpOnly:false,
       maxAge:maxAge*1000
     })
-
+    console.log("Cookies2", res.cookie)
     res.send({usertype:"student",id:user._id,verified:user.detailFlag})
   }
 }catch(err){
