@@ -12,14 +12,11 @@ const adminRoute = require("./routes/AdminRoutes");
 const morgan = require("morgan") ;
 const port = process.env.PORT;
 const logger = require("./loggers/app-logger") ;
-const passport = require('passport') 
-const session = require('express-session')
 const serverLogStream = require("./loggers/server-logger") ;
 const LOGTYPE = require("./utils/constants/app_constants") ;
 const ROUTING = require("./utils/constants/app_constants") ;
-// middleware position - static , data parser , dynamic
 
-//query parameters are client side and params are used in backend
+
 app.use(cors({                          
     origin:["http://localhost:3000", "https://internschool.onrender.com"],
     method:["GET","POST","DELETE","PUT"],
