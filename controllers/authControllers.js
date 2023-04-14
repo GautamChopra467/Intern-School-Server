@@ -104,7 +104,7 @@ try{
   }
 }catch(err){
   logger.error(err + " in Signup") ;
-  // return res.send({message : false}) ;
+  return res.send({message : false}) ;
 }
 }
 
@@ -297,8 +297,8 @@ module.exports.login = async (req, res) => {
           return res.send({message:"Invalid Credentials"})
         }
     }
-  }
-else{
+     }
+    else{
 
     const token = createToken(user._id)
 

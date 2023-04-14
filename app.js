@@ -53,31 +53,8 @@ try{
 
 start();
 
-//use is for installing the middlewares  //middleware are accessories of an app
-
-
-app.use(session({
-    secret:'secret',
-    resave:false,   //if true,for every request in the server we want to create a new session id 
-    saveUninitialized:false
-}))
-
-app.use(passport.initialize())
-
-app.use(passport.session())
-// app.use(express.urlencoded({ extended: false }));
 
 
 
 
-// utils will contain the constants 
 
-// create an object and then put all the routes there 
-
-// routes -----> controller -----> repository -----> schemas ----> connection ----> db
-
-// authorization and authentication
-
-// create a folder named - repository in db.
-
-// mongodb+srv://Ankur:<password>@cluster0.nlukaf4.mongodb.net/?retryWrites=true&w=majority
