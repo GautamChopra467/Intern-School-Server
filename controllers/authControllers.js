@@ -258,7 +258,7 @@ module.exports.login = async (req, res) => {
     const {email, password} = req.body;
  
     const user = await UserRegister.login(email,password)
-
+    console.log(email, password);
     if(!user)
     {
       const company = await Company.login(email,password)
