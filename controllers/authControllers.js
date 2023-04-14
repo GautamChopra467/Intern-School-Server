@@ -268,8 +268,6 @@ module.exports.login = async (req, res) => {
         const token = createToken(company._id)
 
         res.cookie("jwt",token,{
-          path: '/',
-          domain: 'localhost',
           withCredentials:true,
           httpOnly:false,
           maxAge:maxAge*1000
@@ -286,8 +284,6 @@ module.exports.login = async (req, res) => {
           const token = createToken(admin._id)
 
           res.cookie("jwt",token,{
-            path: '/',
-            domain: 'localhost',
             withCredentials:true,
             httpOnly:false,
             maxAge:maxAge*1000
@@ -304,8 +300,6 @@ else{
     const token = createToken(user._id)
 
     res.cookie("jwt",token,{
-      path: '/',
-      domain: 'localhost',
       withCredentials:true,
       httpOnly:false,
       maxAge:maxAge*1000
