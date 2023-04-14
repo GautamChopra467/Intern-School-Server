@@ -269,11 +269,10 @@ module.exports.login = async (req, res) => {
 
         res.cookie("jwt",token,{
           withCredentials:true,
-          httpOnly:true,
-secure:true,
+          httpOnly:false,
           maxAge:maxAge*1000
         })
-        console.log("Cookies1", req.cookies)
+        console.log("Cookies", res.cookie)
         res.send({usertype:"company",id:company._id,verified:company.detailFlag})
 
       }else{
@@ -286,8 +285,7 @@ secure:true,
 
           res.cookie("jwt",token,{
             withCredentials:true,
-            httpOnly:true,
-secure:true,
+            httpOnly:false,
             maxAge:maxAge*1000
           })
 
@@ -303,11 +301,11 @@ else{
 
     res.cookie("jwt",token,{
       withCredentials:true,
-      httpOnly:true,
-secure:true,
+      httpOnly:false,
       maxAge:maxAge*1000
     })
-    console.log("Cookies2", req.cookies)
+
+    console.log("Cookies2", req.cookies.jwt)
     res.send({usertype:"student",id:user._id,verified:user.detailFlag})
   }
 }catch(err){
