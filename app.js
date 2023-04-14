@@ -44,7 +44,7 @@ try{
    await connectDb(process.env.MONGO_URI);
    app.listen(port, () => logger.info(`Server running on port ${port}`));
 }catch(err){ 
-    console.log(err)
+    logger.error(err + " in Starting Server") ;
 }
 }
 

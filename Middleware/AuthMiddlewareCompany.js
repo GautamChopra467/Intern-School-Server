@@ -5,40 +5,13 @@ module.exports.CheckCompany = async(req,res,next)=>{
    
     const token = req.cookies.jwt;
    
-    if(req.type === "google")
-    {
-        if(req.token)
-        {
-            jwt.verify(req.token,"AnuragPandey",async(err,decodedToken)=>{   // header,payload,signature
-                if(err){
-                    res.json({
-                            status:false
-                        });
-                    next();
-                }else{
-                    const user = await Company.findById(decodedToken.id)
-
-                    if(user)
-                    {
-                        res.redirect(`http://localhost:3000/company/${user._id}`)
-                    }
-                } 
-            })
-          
-        }else{
-            res.json(
-                {
-                    status:false
-                })
-            next()
-        }  
-    }
-    else if(token){
-        jwt.verify(token,"AnuragPandey",async(err,decodedToken)=>{   // header,payload,signature
+    if(token){
+        jwt.verify(token,process.env.JWT_SECRET,async(err,decodedToken)=>{   
             if(err){
                 
                 res.json({
-                        status:false
+                        status:false,
+                        message:"Token not found"
                     });
                 next();
             }else{
@@ -56,7 +29,8 @@ module.exports.CheckCompany = async(req,res,next)=>{
                 else{
                     res.json(
                         {
-                            status:false
+                            status:false,
+                            message:"User not found"
                         })
                     next();
 
@@ -67,7 +41,8 @@ module.exports.CheckCompany = async(req,res,next)=>{
 
         res.json(
             {
-                status:false
+                status:false,
+                message:"Token not found"
             })
         next()
     }
