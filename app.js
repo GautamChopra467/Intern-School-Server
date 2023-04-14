@@ -20,8 +20,8 @@ const ROUTING = require("./utils/constants/app_constants") ;
 // middleware position - static , data parser , dynamic
 
 //query parameters are client side and params are used in backend
-app.use(cors({
-    origin:["http://localhost:3000", "https://internschool.onrender.com/"],
+app.use(cors({                          
+    origin:["http://localhost:3000", "https://internschool.onrender.com"],
     method:["GET","POST","DELETE","PUT"],
     credentials:true
 }));
