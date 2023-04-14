@@ -10,7 +10,7 @@ const companyRoute = require('./routes/companyRoutes')
 const internshipRoute = require("./routes/internshipRoute")
 const adminRoute = require("./routes/AdminRoutes");
 const morgan = require("morgan") ;
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 const logger = require("./loggers/app-logger") ;
 const passport = require('passport') 
 const session = require('express-session')
@@ -21,7 +21,7 @@ const ROUTING = require("./utils/constants/app_constants") ;
 
 //query parameters are client side and params are used in backend
 app.use(cors({
-    origin:["http://localhost:3000"],
+    origin:["http://localhost:3000", "https://internschool.onrender.com/"],
     method:["GET","POST","DELETE","PUT"],
     credentials:true
 }));
