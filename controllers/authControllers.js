@@ -301,7 +301,8 @@ else{
 
     res.cookie("jwt",token,{
       withCredentials:true,
-      httpOnly:false,
+      httpOnly:true,
+      sameSite:'none',
       maxAge:maxAge*1000
     })
 
